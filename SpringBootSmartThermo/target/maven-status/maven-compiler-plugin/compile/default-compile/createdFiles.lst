@@ -1,5 +1,6 @@
-com\experiment\experiment00\GuiController.class
-com\experiment\experiment00\UserReadController.class
-com\experiment\experiment00\UserWriteController.class
-com\experiment\experiment00\Experiment00Application.class
-com\experiment\experiment00\TestController.class
+com\experiment\experimental\CVProxy.class
+com\experiment\experimental\GuiController.class
+com\experiment\experimental\AppMem.class
+com\experiment\experimental\ExperimentalApplication.class
+com\experiment\experimental\UserReadController.class
+com\experiment\experimental\UserWriteController.class
