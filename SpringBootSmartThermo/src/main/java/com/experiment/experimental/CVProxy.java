@@ -10,9 +10,6 @@ import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.time.LocalDateTime;
-
-import java.util.Locale;
 import java.time.*;
 import java.time.format.*;
 
@@ -23,7 +20,7 @@ public class CVProxy {
 	//private static double setTempRoom = 17.5; // temp fix
 	
 	final private static String DAYSTART = "07:00";
-	final private static String DAYEND = "16:00";
+	final private static String DAYEND = "22:00";
 	
 	final private static double TEMPDIFF = 0.5;
 	final private static String CONFIRMCMD = "#ACT-OK";
@@ -108,9 +105,14 @@ public class CVProxy {
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
 				String dateStr = dt.format(dtf);
 
-				LocalTime lt = LocalTime.of(Integer.parseInt(dateStr.split(":")[0]), Integer.parseInt(dateStr.split(":")[1]));				
-				LocalTime ltStart = LocalTime.of(Integer.parseInt(DAYSTART.split(":")[0]), Integer.parseInt(DAYSTART.split(":")[1]));
-				LocalTime ltEnd = LocalTime.of(Integer.parseInt(DAYEND.split(":")[0]), Integer.parseInt(DAYEND.split(":")[1]));
+				//LocalTime lt = LocalTime.of(Integer.parseInt(dateStr.split(":")[0]), Integer.parseInt(dateStr.split(":")[1]));				
+				LocalTime lt = LocalTime.parse(dateStr,DateTimeFormatter.ofPattern("HH:mm"));
+				  
+				//LocalTime ltStart = LocalTime.of(Integer.parseInt(DAYSTART.split(":")[0]), Integer.parseInt(DAYSTART.split(":")[1]));
+				LocalTime ltStart = LocalTime.parse(DAYSTART,DateTimeFormatter.ofPattern("HH:mm"));
+				  				
+				//LocalTime ltEnd = LocalTime.of(Integer.parseInt(DAYEND.split(":")[0]), Integer.parseInt(DAYEND.split(":")[1]));
+				LocalTime ltEnd = LocalTime.parse(DAYEND,DateTimeFormatter.ofPattern("HH:mm"));
 				
 				// LocalDateTime dt = LocalDateTime.ofEpochSecond(timestamp, 0, );
 				
