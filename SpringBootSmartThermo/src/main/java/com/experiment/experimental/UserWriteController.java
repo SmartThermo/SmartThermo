@@ -11,8 +11,14 @@ public class UserWriteController {
 	@RequestMapping(value = "/write/{settemp}", method = RequestMethod.GET)
 	public String write(@PathVariable String settemp) {
 		double setTempRoom = Double.parseDouble(settemp);
-		AppMem.storeData("" + setTempRoom, AppMem.GUIFILENAME);
-		String retStr = "" + CVProxy.getTempRoom() + "#" + setTempRoom;
+
+		if( 5.5 <= setTempRoom && setTempRoom <= 29.5 ) { // corresponds with GUI controller range
+			AppMem.storeData("" + setTempRoom, AppMem.GUIFILENAME);
+			String retStr = "" + CVProxy.getTempRoom() + "#" + setTempRoom;
+			return retStr;			
+		}
+
+		String retStr = "" + CVProxy.getTempRoom() + "#" + AppMem.retrieveData(AppMem.GUIFILENAME);		
 		return retStr;
 
 	}
