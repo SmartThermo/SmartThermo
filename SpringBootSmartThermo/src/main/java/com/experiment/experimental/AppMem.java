@@ -9,6 +9,7 @@ import java.io.IOException;
 public class AppMem {
 
 	static public final String GUIFILENAME = "settemp.txt";
+	static public final String GUIFILENAMENIGHT = "settempnight.txt";
 	static public final String APPFILENAME = "data.txt";
 
 	static String line;
