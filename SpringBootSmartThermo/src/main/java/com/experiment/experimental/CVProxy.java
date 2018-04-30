@@ -10,10 +10,20 @@ import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.time.LocalDateTime;
+
+import java.util.Locale;
+import java.time.*;
+import java.time.format.*;
+
+
 
 public class CVProxy {
 
 	//private static double setTempRoom = 17.5; // temp fix
+	
+	final private static String DAYSTART = "07:00";
+	final private static String DAYEND = "16:00";
 	
 	final private static double TEMPDIFF = 0.5;
 	final private static String CONFIRMCMD = "#ACT-OK";
@@ -29,6 +39,7 @@ public class CVProxy {
 
 	private static boolean appRunning;
 
+	private static double thresholdTemp;
 	private static double setTempRoom;
 	private static double setTempRoomNight;
 	private static double pressure;
@@ -37,7 +48,7 @@ public class CVProxy {
 	private static boolean doorClosed;
 	private static int lastMovement; // temp fix
 	private static double gasUsage;
-	private static int timestamp; // temp fix
+	private static long timestamp; // temp fix
 
 	// alert system
 	
@@ -71,7 +82,7 @@ public class CVProxy {
 		return gasUsage;
 	}
 
-	public static int getTimestamp() {
+	public static long getTimestamp() {
 		return timestamp;
 	}
 
@@ -90,29 +101,44 @@ public class CVProxy {
 				getData(); // needs connection
 				processData();
 
+				// thus known: time on SmartCV side
+
+				// DATETIME
+				ZonedDateTime dt = LocalDateTime.ofEpochSecond(timestamp, 0, OffsetDateTime.now(ZoneId.systemDefault()).getOffset()).atZone(ZoneId.systemDefault());
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+				String dateStr = dt.format(dtf);
+
+				LocalTime lt = LocalTime.of(Integer.parseInt(dateStr.split(":")[0]), Integer.parseInt(dateStr.split(":")[1]));				
+				LocalTime ltStart = LocalTime.of(Integer.parseInt(DAYSTART.split(":")[0]), Integer.parseInt(DAYSTART.split(":")[1]));
+				LocalTime ltEnd = LocalTime.of(Integer.parseInt(DAYEND.split(":")[0]), Integer.parseInt(DAYEND.split(":")[1]));
+				
+				// LocalDateTime dt = LocalDateTime.ofEpochSecond(timestamp, 0, );
+				
+				System.out.println("time on SmartCV side: " + dateStr + ", lt:  " + lt + ", " + ltStart + ", " + ltEnd);
+				
 				setTempRoom = Double.parseDouble(AppMem.retrieveData(AppMem.GUIFILENAME));
 				setTempRoomNight = Double.parseDouble(AppMem.retrieveData(AppMem.GUIFILENAMENIGHT));
 
+				// |--------Nacht--------|-------Dag---------|-------Nacht------------|
+				
+				if(lt.isAfter(ltStart) && lt.isBefore(ltEnd)) { 
+					thresholdTemp = setTempRoom; 
+				} else {
+					thresholdTemp = setTempRoomNight; 					
+				}
+
 				// to do: IF drukTeHoog THEN appRunning = false; ENDIF
 
-				// IF APPSAYSISDAG THEN use setTempRoom ELSE setTempRoomNight ENDIF
-				double minSwitchPoint = setTempRoom - TEMPDIFF;
-				//double maxSwitchPoint = setTempRoom + TEMPDIFF; // usefull if also had cooling capabilities
-
-				//System.out.println("range: " + minSwitchPoint + " - " + maxSwitchPoint);
-
-				//if(tempRoom < setTempRoom || (minSwitchPoint < tempRoom && tempRoom < maxSwitchPoint )) {
-
+				double minSwitchPoint = thresholdTemp - TEMPDIFF;
+	
 				System.out.println("\ncontrol loop:  tempRoom / setTemp / setTempNight = " + tempRoom + " /  " + setTempRoom + " /  " + setTempRoomNight);
 				
 				if(tempRoom <= minSwitchPoint) {
 					turnOn(); 
-					//System.out.println(">>>> turn on");
-
+					System.out.println(">>>> turn on");
 				} else {
-
 					turnOff(); 
-					//System.out.println(">>>> turn off");
+					System.out.println(">>>> turn off");
 				}
 
 				continue CONTROLTEMPROOMLOOP;
@@ -195,7 +221,7 @@ public class CVProxy {
 		doorClosed = (arr[5].equals("1") ? true : false);
 		lastMovement = Integer.parseInt(arr[6]); // temp fix
 		gasUsage = Double.parseDouble(arr[7]);
-		timestamp = Integer.parseInt(arr[8]); // temp fix
+		timestamp = Long.parseLong(arr[8]); // temp fix
 
 		AppMem.storeData(lastData, AppMem.APPFILENAME);
 	}
