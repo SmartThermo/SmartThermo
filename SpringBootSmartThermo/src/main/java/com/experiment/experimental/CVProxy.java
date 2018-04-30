@@ -285,7 +285,7 @@ public class CVProxy {
 		switch (type) {
 
 		case "on":
-			msg += "ACT-$50$30";
+			msg += "ACT-$50$70";
 			break;
 		case "off":
 			msg += "ACT-$0$0";
