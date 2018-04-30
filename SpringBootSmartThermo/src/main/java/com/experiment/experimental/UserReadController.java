@@ -8,7 +8,9 @@ public class UserReadController {
 	
 	@RequestMapping("/read")
 	public String read() {
-		String retStr = "" + CVProxy.getTempRoom() + "#" + AppMem.retrieveData(AppMem.GUIFILENAME);
+		String retStr = "" + CVProxy.getTempRoom() + 
+				"#" + AppMem.retrieveData(AppMem.GUIFILENAME) + 
+				"#" + AppMem.retrieveData(AppMem.GUIFILENAMENIGHT);
 		return retStr;
 	}
 

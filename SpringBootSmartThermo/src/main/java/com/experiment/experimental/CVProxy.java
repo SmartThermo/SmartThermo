@@ -30,6 +30,7 @@ public class CVProxy {
 	private static boolean appRunning;
 
 	private static double setTempRoom;
+	private static double setTempRoomNight;
 	private static double pressure;
 	private static double tempRoom;
 	private static double tempOutside;
@@ -90,9 +91,11 @@ public class CVProxy {
 				processData();
 
 				setTempRoom = Double.parseDouble(AppMem.retrieveData(AppMem.GUIFILENAME));
+				setTempRoomNight = Double.parseDouble(AppMem.retrieveData(AppMem.GUIFILENAMENIGHT));
 
 				// to do: IF drukTeHoog THEN appRunning = false; ENDIF
 
+				// IF APPSAYSISDAG THEN use setTempRoom ELSE setTempRoomNight ENDIF
 				double minSwitchPoint = setTempRoom - TEMPDIFF;
 				//double maxSwitchPoint = setTempRoom + TEMPDIFF; // usefull if also had cooling capabilities
 
@@ -100,7 +103,7 @@ public class CVProxy {
 
 				//if(tempRoom < setTempRoom || (minSwitchPoint < tempRoom && tempRoom < maxSwitchPoint )) {
 
-				System.out.println("\ncontrol loop:  tempRoom / setTemp = " + tempRoom + " /  " + setTempRoom);
+				System.out.println("\ncontrol loop:  tempRoom / setTemp / setTempNight = " + tempRoom + " /  " + setTempRoom + " /  " + setTempRoomNight);
 				
 				if(tempRoom <= minSwitchPoint) {
 					turnOn(); 
@@ -285,7 +288,7 @@ public class CVProxy {
 		switch (type) {
 
 		case "on":
-			msg += "ACT-$50$70"; // test
+			msg += "ACT-$50$70";
 			break;
 		case "off":
 			msg += "ACT-$0$0";
