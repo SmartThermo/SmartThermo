@@ -1,6 +1,11 @@
-com\experiment\experimental\CVProxy.class
-com\experiment\experimental\GuiController.class
-com\experiment\experimental\AppMem.class
-com\experiment\experimental\ExperimentalApplication.class
-com\experiment\experimental\UserReadController.class
-com\experiment\experimental\UserWriteController.class
+com\tsecourse\smartcvapp\CVState.class
+com\tsecourse\smartcvapp\CVProxy.class
+com\tsecourse\smartcvapp\MessageDispatcher.class
+com\tsecourse\smartcvapp\AppSettings.class
+com\tsecourse\smartcvapp\UserWriteController.class
+com\tsecourse\smartcvapp\UserReadController.class
+com\tsecourse\smartcvapp\SmartCVApplication.class
+com\tsecourse\smartcvapp\CVConnector.class
+com\tsecourse\smartcvapp\GuiTemplateController.class
+com\tsecourse\smartcvapp\MessageTranslator.class
+com\tsecourse\smartcvapp\AppMem.class

@@ -1,6 +1,11 @@
-C:\Users\arnold.slotboom\eclipse-workspace\SmartThermo\src\main\java\com\experiment\experimental\AppMem.java
-C:\Users\arnold.slotboom\eclipse-workspace\SmartThermo\src\main\java\com\experiment\experimental\GuiController.java
-C:\Users\arnold.slotboom\eclipse-workspace\SmartThermo\src\main\java\com\experiment\experimental\ExperimentalApplication.java
-C:\Users\arnold.slotboom\eclipse-workspace\SmartThermo\src\main\java\com\experiment\experimental\CVProxy.java
-C:\Users\arnold.slotboom\eclipse-workspace\SmartThermo\src\main\java\com\experiment\experimental\UserWriteController.java
-C:\Users\arnold.slotboom\eclipse-workspace\SmartThermo\src\main\java\com\experiment\experimental\UserReadController.java
+C:\Users\arnold.slotboom\Documents\GitHub\SmartThermo\SpringBootSmartThermo\src\main\java\com\tsecourse\smartcvapp\CVConnector.java
+C:\Users\arnold.slotboom\Documents\GitHub\SmartThermo\SpringBootSmartThermo\src\main\java\com\tsecourse\smartcvapp\CVState.java
+C:\Users\arnold.slotboom\Documents\GitHub\SmartThermo\SpringBootSmartThermo\src\main\java\com\tsecourse\smartcvapp\MessageDispatcher.java
+C:\Users\arnold.slotboom\Documents\GitHub\SmartThermo\SpringBootSmartThermo\src\main\java\com\tsecourse\smartcvapp\SmartCVApplication.java
+C:\Users\arnold.slotboom\Documents\GitHub\SmartThermo\SpringBootSmartThermo\src\main\java\com\tsecourse\smartcvapp\UserWriteController.java
+C:\Users\arnold.slotboom\Documents\GitHub\SmartThermo\SpringBootSmartThermo\src\main\java\com\tsecourse\smartcvapp\CVProxy.java
+C:\Users\arnold.slotboom\Documents\GitHub\SmartThermo\SpringBootSmartThermo\src\main\java\com\tsecourse\smartcvapp\GuiTemplateController.java
+C:\Users\arnold.slotboom\Documents\GitHub\SmartThermo\SpringBootSmartThermo\src\main\java\com\tsecourse\smartcvapp\UserReadController.java
+C:\Users\arnold.slotboom\Documents\GitHub\SmartThermo\SpringBootSmartThermo\src\main\java\com\tsecourse\smartcvapp\AppSettings.java
+C:\Users\arnold.slotboom\Documents\GitHub\SmartThermo\SpringBootSmartThermo\src\main\java\com\tsecourse\smartcvapp\AppMem.java
+C:\Users\arnold.slotboom\Documents\GitHub\SmartThermo\SpringBootSmartThermo\src\main\java\com\tsecourse\smartcvapp\MessageTranslator.java
