@@ -101,9 +101,14 @@ public class CVProxy {
 				// thus known: time on SmartCV side
 
 				// DATETIME
-				ZonedDateTime dt = LocalDateTime.ofEpochSecond(timestamp, 0, OffsetDateTime.now(ZoneId.systemDefault()).getOffset()).atZone(ZoneId.systemDefault());
-				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-				String dateStr = dt.format(dtf);
+				LocalDateTime dt = LocalDateTime.ofEpochSecond(timestamp, 0, ZoneOffset.UTC); //giving right time, OffsetDateTime is 2hours late.
+				DateTimeFormatter dtFormatter = DateTimeFormatter.ofPattern("HH:mm");
+				
+				String dateStr = dt.format(dtFormatter);
+				
+				//ZonedDateTime dt = LocalDateTime.ofEpochSecond(timestamp, 0, OffsetDateTime.now(ZoneId.systemDefault()).getOffset()).atZone(ZoneId.systemDefault());
+				//DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+				//String dateStr = dt.format(dtf);
 
 				//LocalTime lt = LocalTime.of(Integer.parseInt(dateStr.split(":")[0]), Integer.parseInt(dateStr.split(":")[1]));				
 				LocalTime lt = LocalTime.parse(dateStr,DateTimeFormatter.ofPattern("HH:mm"));
