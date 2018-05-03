@@ -55,6 +55,8 @@ public class CVProxy {
 		MessageDispatcher.sendOut(MessageTranslator.buildMessage("connect", ""));
 		lastData = MessageDispatcher.receiveIn();
 		
+		AppMem.init(); 
+		
 		CONTROLTEMPROOMLOOP:
 
 		while (appRunning) {
