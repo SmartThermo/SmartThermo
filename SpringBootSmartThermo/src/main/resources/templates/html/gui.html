@@ -1,44 +1,45 @@
 <!DOCTYPE html>
-	<head>
-		<meta http-equiv='content-type' content='text/html; charset=UTF-8;charset=utf-8'>
-		<title>SMART CV APP</title>
-		<link rel="stylesheet" th:href="@{/css/gui.css}">
-	</head>
-	<body>
-		<br><br><br>
-		<center>
+       <head>
+             <meta http-equiv='content-type' content='text/html; charset=UTF-8;charset=utf-8'>
+             <title>SMART CV APP</title>
+             <link rel="stylesheet" th:href="@{/css/gui.css}">
+       </head>
+       <body>
+             <br><br><br>
+             <center>
 
+<div class="outergui">
+<div class="innergui">
 
+<div class="image">
 
+<br><br><br>
 
 <h1 style="text-align: center;" th:text="'SMART CV APP versie ' + ${appversion}"></h1>
 
-<h2 style="text-align: center;">HUIDIGE TEMPERATUUR:
-<div id='curtempdiv'>
-</h2>
-<!-- <div style='float:left;'>temperatuur: </div><div style='float:left;' id='curtempdiv'></div> -->
+<h2 style="text-align: center;">HUIDIGE TEMPERATUUR: <b id='curtempdiv'></b></h2>
 
 <h2 style="text-align: center;">DAG TEMP:
-<input type ='number' min='5.5' max='29.5' step='0.5' id='tf' value='' onclick=''></h2>
+<input type='number' min='5.5' max='29.5' step='0.5' id='tf' value='' onclick=''>
+</h2>
 
 <h2 style="text-align: center;">NACHT TEMP:
-<input type ='number' min='5.5' max='29.5' step='0.5' id='tf2' value='' onclick=''>
+<input type='number' min='5.5' max='29.5' step='0.5' id='tf2' value='' onclick=''>
+</h2>
 
-<button class="button" onclick='javascript:setTemp();'>SET</button></h2>
-
-<!-- <input class="button" type='button' value='versturen' onclick='javascript:setTemp();'> -->
-
-<br>
-<br>
-<br>
-<image class="image"></image>
-
-<image class="image2"></image>
+<button class="button" onclick='javascript:setTemp();'>SET</button>
 
 <div style='color:red;' id='alertdiv'></div>
 
+</div>
 
-		</center>
-		<script type="text/javascript" th:src="@{/js/guiscript.js}"></script>
-	</body>
+<div class="image2"></div>
+
+</div>
+</div>
+
+
+             </center>
+             <script type="text/javascript" th:src="@{/js/guiscript.js}"></script>
+       </body>
 </html>
