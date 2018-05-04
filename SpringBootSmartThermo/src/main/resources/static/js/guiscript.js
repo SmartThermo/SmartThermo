@@ -25,6 +25,8 @@ function ajaxInit() {
 				}
 				if(connErr || ajaxRequest.responseText.split('#')[0] == '-100.0') { 
 					document.getElementById('alertdiv').innerHTML = '<br>Kan geen verbinding maken met SmartCV .. <br>Bel a.u.b. het servicenummer.'; 
+				} else { 
+					document.getElementById('alertdiv').innerHTML = ''; 
 				}
 			}
 		}; 
