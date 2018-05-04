@@ -27,14 +27,7 @@ public class CVProxy {
 		}
 	}
 	
-	/*static void waitPauze() {
-		try {
-			Thread.sleep(AppSettings.PAUZEMILLIS);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}*/
-
+	
 	// clean up resources
 
 	public static void shutDown	() {

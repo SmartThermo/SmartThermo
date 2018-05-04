@@ -19,8 +19,8 @@ public class MessageDispatcher {
 	// inbox
 
 	static void openInbox() {
-			//if(connected == false) { return; } // is void
-		
+		// if(connected == false) { return; } // is void
+
 		try {
 			InputStream is = TCPIPConnector.getSocket().getInputStream();
 			InputStreamReader isr = new InputStreamReader(is);
@@ -28,8 +28,8 @@ public class MessageDispatcher {
 		} catch (IOException e) {
 			CVProxy.cvState.setTempRoom(-100.0);
 			CVProxy.startUp();
-			//SystemAllert.reboot(false);
-			//SystemAllert.checkIsAlive=false;
+			// SystemAllert.reboot(false);
+			// SystemAllert.checkIsAlive=false;
 			System.out.println(" openInbox !!! ---------- open inbox err: " + e);
 		}
 	}
@@ -45,8 +45,8 @@ public class MessageDispatcher {
 		} catch (IOException e) {
 			CVProxy.cvState.setTempRoom(-100.0);
 			CVProxy.startUp();
-			//SystemAllert.reboot(false);
-			//SystemAllert.checkIsAlive=false;
+			// SystemAllert.reboot(false);
+			// SystemAllert.checkIsAlive=false;
 			System.out.println(" openOutbox !!! ---------- open outbox err: " + e);
 		}
 
@@ -62,8 +62,8 @@ public class MessageDispatcher {
 		} catch (IOException e) {
 			CVProxy.cvState.setTempRoom(-100.0);
 			CVProxy.startUp();
-			//SystemAllert.reboot(false);
-			//SystemAllert.checkIsAlive=false;
+			// SystemAllert.reboot(false);
+			// SystemAllert.checkIsAlive=false;
 			System.out.println(" receiveIn !!! ---------- receive in err: " + e);
 		}
 
@@ -75,20 +75,19 @@ public class MessageDispatcher {
 	// send
 
 	static void sendOut(String msg) {
-		// msg = MessageTranslator.buildMessage(msg, "");
+		//msg = MessageTranslator.buildMessage(msg, "");
+
 		try {
 			bw.write(msg);
 			bw.flush();
 		} catch (IOException e) {
 			CVProxy.cvState.setTempRoom(-100.0);
 			CVProxy.startUp();
-			//SystemAllert.reboot(false);
-			//SystemAllert.checkIsAlive=false;
+			// SystemAllert.reboot(false);
+			// SystemAllert.checkIsAlive=false;
 			System.out.println(" sendOut !!! ---------- send out err: " + e);
 		}
 		System.out.println("\n\tTell CV: " + msg);
 	}
-
-	
 
 }

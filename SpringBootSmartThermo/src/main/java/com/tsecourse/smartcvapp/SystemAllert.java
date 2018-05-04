@@ -8,8 +8,7 @@ public class SystemAllert {
 		
 		if(checkIsAlive==true) {
 			System.out.println("System is alive");
-						
-			}else {
+		}else {
 				System.out.println("No connection to CV, system is trying to restart");
 				CVProxy.turnOff();
 				CVProxy.waitPauze(AppSettings.PAUZE30S);
