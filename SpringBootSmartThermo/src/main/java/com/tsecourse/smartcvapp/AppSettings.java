@@ -16,7 +16,11 @@ public class AppSettings {
 	static final String SECRET = "123456";
 	static final String HOST = "localhost";
 	static final int PORT = 7777;
+	
+	//pauzeTime
 	static final int PAUZEMILLIS = (1000 * 60 * 1) / 24;
+	static final int PAUZE30S = (1000 * 60 * 1)/4;
+	
 
 	static final String GUIFILENAME = "settemp.txt";
 	static final String GUIFILENAMENIGHT = "settempnight.txt";

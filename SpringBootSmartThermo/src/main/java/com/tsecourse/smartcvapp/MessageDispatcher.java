@@ -19,13 +19,17 @@ public class MessageDispatcher {
 	// inbox
 
 	static void openInbox() {
-
+			//if(connected == false) { return; } // is void
+		
 		try {
-			InputStream is = CVConnector.getSocket().getInputStream();
+			InputStream is = TCPIPConnector.getSocket().getInputStream();
 			InputStreamReader isr = new InputStreamReader(is);
 			br = new BufferedReader(isr);
 		} catch (IOException e) {
 			CVProxy.cvState.setTempRoom(-100.0);
+			CVProxy.startUp();
+			//SystemAllert.reboot(false);
+			//SystemAllert.checkIsAlive=false;
 			System.out.println(" openInbox !!! ---------- open inbox err: " + e);
 		}
 	}
@@ -35,11 +39,14 @@ public class MessageDispatcher {
 	static void openOutbox() {
 
 		try {
-			OutputStream os = CVConnector.getSocket().getOutputStream();
+			OutputStream os = TCPIPConnector.getSocket().getOutputStream();
 			OutputStreamWriter osw = new OutputStreamWriter(os);
 			bw = new BufferedWriter(osw);
 		} catch (IOException e) {
 			CVProxy.cvState.setTempRoom(-100.0);
+			CVProxy.startUp();
+			//SystemAllert.reboot(false);
+			//SystemAllert.checkIsAlive=false;
 			System.out.println(" openOutbox !!! ---------- open outbox err: " + e);
 		}
 
@@ -54,6 +61,9 @@ public class MessageDispatcher {
 			message = br.readLine();
 		} catch (IOException e) {
 			CVProxy.cvState.setTempRoom(-100.0);
+			CVProxy.startUp();
+			//SystemAllert.reboot(false);
+			//SystemAllert.checkIsAlive=false;
 			System.out.println(" receiveIn !!! ---------- receive in err: " + e);
 		}
 
@@ -71,6 +81,9 @@ public class MessageDispatcher {
 			bw.flush();
 		} catch (IOException e) {
 			CVProxy.cvState.setTempRoom(-100.0);
+			CVProxy.startUp();
+			//SystemAllert.reboot(false);
+			//SystemAllert.checkIsAlive=false;
 			System.out.println(" sendOut !!! ---------- send out err: " + e);
 		}
 		System.out.println("\n\tTell CV: " + msg);

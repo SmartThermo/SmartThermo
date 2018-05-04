@@ -1,3 +1,4 @@
+
 h1 {
     color: #3a873a;
     font-family: verdana;    
@@ -11,10 +12,25 @@ h2 {
     font-size: 100%;
 }
 
+.outergui {
+       width: 90vw;
+       height: 75vh;
+}
+
+.innergui {
+       top: 50%; left: 250px;
+       transform: translate(-50%,-50%);
+       margin: auto;
+       position: absolute;
+       width: 500px;
+       height: 350px;
+       position: relative;
+}
+
 .image {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
-  box-sizing: content-box;
+ box-sizing: content-box;
   width: 500px;
   height: 350px;
   border: none;
@@ -22,11 +38,11 @@ h2 {
   border-radius: 143px 0;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
-  background: #76e835;
+  background: #76e835; 
     position: absolute;
-    left: 15%;
+    left: 5%;
     top: 0px;
-    z-index: -1;
+    z-index: 10;
 }
 
 .image2 {
@@ -42,16 +58,16 @@ h2 {
   text-overflow: ellipsis;
   background: #3a873a;
     position: absolute;
-    left: 16%;
+    left: 6%;
     top: 10px;
-    z-index:-2;
+    z-index:5;
 }
 
 
 
 .button {
     border-top-left-radius: 50px;
-	border-bottom-right-radius: 50px;
+       border-bottom-right-radius: 50px;
     position: relative;
     background-color: #4CAF50;
     border: none;
@@ -65,8 +81,8 @@ h2 {
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
-    z-index: 1;
- }
+    z-index: 11;
+}
 
 .button:after {
 
@@ -104,6 +120,8 @@ h2 {
     text-decoration: none;
     overflow: hidden;
     cursor: pointer;
-    z-index: 1;
- }
- 
+    z-index: 11;
+}
+
+
+

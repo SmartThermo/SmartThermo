@@ -16,50 +16,47 @@ public class CVProxy {
 
 	static String lastData = null;
 
-	private static boolean appRunning;
+//	private static boolean appRunning;
 
-	//
+		
+	static void waitPauze(int pauzeTime) {
+		try {
+			Thread.sleep(pauzeTime);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 	
-	static void waitPauze() {
+	/*static void waitPauze() {
 		try {
 			Thread.sleep(AppSettings.PAUZEMILLIS);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	// clean up resources
 
 	public static void shutDown	() {
-		CVConnector.disconnect();
+		TCPIPConnector.disconnect();
 	}
 	
 	
 	// ... 
 
 	public static void startUp() {
-
-		appRunning = true;
 		
-			// IP/TCP: socket verbinding maken
+		//appRunning = true;
 		
-		CVConnector.connect();
-
-			// vraag bericht uitwisseling met CV SIM
-		
-		MessageDispatcher.openOutbox();
-		MessageDispatcher.openInbox();
-		
-			// start conversation with SIM
-		
-		MessageDispatcher.sendOut(MessageTranslator.buildMessage("connect", ""));
+		StartCVConnection.startCVConnection();
+					
 		lastData = MessageDispatcher.receiveIn();
 		
 		AppMem.init(); 
 		
 		CONTROLTEMPROOMLOOP:
-
-		while (appRunning) {
+		while (TCPIPConnector.connectOK==true) {
+		//while (appRunning) {
 
 			getCurrentCVData();
 			MessageTranslator.processData();
@@ -89,7 +86,7 @@ public class CVProxy {
 
 			double minSwitchPoint = thresholdTemp - AppSettings.TEMPDIFF;
 
-			System.out.println("\ncontrol loop:  tempRoom / setTemp / setTempNight = " + 
+			System.out.println("\n control loop:  tempRoom / setTemp / setTempNight = " + 
 					cvState.getTempRoom() + " /  " + cvState.getSetTempRoom() + " /  " + cvState.getSetTempRoomNight());
 
 			if (cvState.getTempRoom() <= minSwitchPoint) {
@@ -103,13 +100,15 @@ public class CVProxy {
 			continue CONTROLTEMPROOMLOOP;
 		}
 		shutDown();
+		//SystemAllert.reboot(false);
 	}
 
 	// cmd: cv give data
 
 	private static void getCurrentCVData() {
 		MessageDispatcher.sendOut(MessageTranslator.buildMessage("stat", ""));
-		waitPauze();
+		waitPauze(AppSettings.PAUZEMILLIS);
+		// waitPauze();
 		lastData = MessageDispatcher.receiveIn();
 	}
 
@@ -117,8 +116,9 @@ public class CVProxy {
 
 	static void turnOn() {
 		MessageDispatcher.sendOut(MessageTranslator.buildMessage("on", ""));
-		waitPauze();
-		lastData = MessageDispatcher.receiveIn();
+		waitPauze(AppSettings.PAUZEMILLIS);
+		// waitPauze();
+			lastData = MessageDispatcher.receiveIn();
 		if (!lastData.equals(AppSettings.CONFIRMCMD)) {
 			System.out.println("command not confirmed");
 		}
@@ -128,7 +128,8 @@ public class CVProxy {
 
 	static void turnOff() {
 		MessageDispatcher.sendOut(MessageTranslator.buildMessage("off", ""));
-		waitPauze();
+		waitPauze(AppSettings.PAUZEMILLIS);
+		// waitPauze();
 		lastData = MessageDispatcher.receiveIn();
 		if (!lastData.equals(AppSettings.CONFIRMCMD)) {
 			System.out.println("command not confirmed");

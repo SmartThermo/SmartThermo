@@ -12,9 +12,10 @@ import java.net.UnknownHostException;
 
 */
 
-public class CVConnector {
+public class TCPIPConnector {
 
 	private static Socket socket = null;
+	static boolean connectOK = false;
 	
 	public static Socket getSocket() {
 		return socket;
@@ -28,31 +29,24 @@ public class CVConnector {
 	 * isClosed()
 	 * */	
 
-	static boolean checkAlive() {
-		 if(socket.isOutputShutdown() || socket.isInputShutdown()) {
-			 return false;
-		 }
-		 return true;
-	}
-	
-	// IP/TCP socket connect
-	
-	static void connect() {
-
+	static boolean connect() {
+	//static void connect() {
 		socket = null;
-
+					
 		try {
 			InetAddress address = InetAddress.getByName(AppSettings.HOST);
-
+				
 			try {
 				socket = new Socket(address, AppSettings.PORT);
-
+				return connectOK=true;
 			} catch (IOException e) {
-				System.out.println("socket connect err: " + e);
+				System.out.println("Can not connect to CV, socket connect err: " + e);
+				return connectOK=false;
 			}
 
 		} catch (UnknownHostException e) {
 			System.out.println(e);
+			return connectOK=false;
 		}	
 	}
 	
@@ -61,9 +55,10 @@ public class CVConnector {
 	static void disconnect() {
 
 		System.out.println("socket disconnect");
-
+		//System.out.println("value of socket: " + socket);
 		try {
 			socket.close();
+			//System.out.println("value of socket2: " + socket);
 			//socket = null; // autom. null by close ?
 		} catch (Exception e) {
 			e.printStackTrace();
