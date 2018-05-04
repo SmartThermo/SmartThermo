@@ -45,7 +45,7 @@ public class CVProxy {
 					
 		lastData = MessageDispatcher.receiveIn();
 		
-		AppMem.init(); 
+//		AppMem.init(); 
 		
 		CONTROLTEMPROOMLOOP:
 		while (TCPIPConnector.connectOK==true) {

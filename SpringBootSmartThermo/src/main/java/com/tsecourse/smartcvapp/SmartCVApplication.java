@@ -13,6 +13,7 @@ public class SmartCVApplication {
 		SpringApplication.run(SmartCVApplication.class, args);
 		
 			/* CV sim facing */
+		AppMem.init(); // create data txt files for status logging.
 
 		CVProxy.startUp();
 		
