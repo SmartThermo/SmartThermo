@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style> 
+ h1 {
+     color: #3a873a;
+     font-family: verdana;
+     font-style: italic;
+     font-size: 200%;
+}
+ h2 {
+     color: #3a873a;
+     font-family: verdana;
+     font-size: 150%;
+}
+ h3 {
+     color: #3a873a;
+     font-family: verdana;
+     font-size: 100%;
+}
+ h4 {
+     color: #ccffcc;
+     font-family: verdana;
+     font-size: 50%;
+}
+ .image {
+     width: 600px;
+     height: 500px;
+     border-radius: 143px 0;
+     border-radius: 143px 0;
+     background: #76e835;
+     position: absolute;
+     left: 15%;
+     top: 0px;
+     z-index: -1;
+}
+ .image2 {
+     width: 600px;
+     height: 500px;
+     border-radius: 143px 0;
+     border-radius: 143px 0;
+     background: #3a873a;
+     position: absolute;
+     left: 16%;
+     top: 10px;
+     z-index:-2;
+}
+ .button {
+     border-top-left-radius: 50px;
+     border-bottom-right-radius: 50px;
+     position: relative;
+     background-color: #4CAF50;
+     border: none;
+     font-size: 18px;
+     color: #FFFFFF;
+     padding: 10px;
+     width: 80px;
+     text-align: center;
+     -webkit-transition-duration: 0.4s;
+    /* Safari */
+     transition-duration: 0.4s;
+     text-decoration: none;
+     overflow: hidden;
+     cursor: pointer;
+     z-index: 1;
+}
+ .button:after {
+     content: "";
+     background: #90EE90;
+     display: block;
+     position: absolute;
+     padding-top: 300%;
+     padding-left: 350%;
+     margin-left: -20px!important;
+     margin-top: -120%;
+     opacity: 0;
+     transition: all 0.8s 
+}
+ .button:active:after {
+     padding: 0;
+     margin: 0;
+     opacity: 1;
+     transition: 0s 
+}
+ .divTable{
+     display: table;
+     width: 0;
+     margin: auto;
+}
+ .divTableRow {
+     display: table-row;
+}
+ .divTableHeading {
+     background-color: #EEE;
+     display: table-header-group;
+}
+ .divTableCell, .divTableHead {
+     border: 1px solid #999999;
+     display: table-cell;
+     padding: 0px 2px;
+}
+ .divTableHeading {
+     background-color: #EEE;
+     display: table-header-group;
+     font-weight: bold;
+}
+ .divTableFoot {
+     background-color: #EEE;
+     display: table-footer-group;
+     font-weight: bold;
+}
+ .divTableBody {
+     display: table-row-group;
+}
+ //SLIDERSTYLE 
+  .slidecontainer {
+     width: 100%;
+}
+ .slider {
+     -webkit-appearance: none;
+     width: 75%;
+     height: 25px;
+     background: #cccccc;
+     outline: none;
+     opacity: 1;
+     -webkit-transition: .2s;
+     transition: opacity .2s;
+}
+ .slider:hover {
+     opacity: 1;
+}
+ .slider::-webkit-slider-thumb {
+     -webkit-appearance: none;
+     appearance: none;
+     width: 25px;
+     height: 25px;
+     background: #3a873a;
+     cursor: pointer;
+}
+ .slider::-moz-range-thumb {
+     width: 25px;
+     height: 25px;
+     background: #3a873a;
+     cursor: pointer;
+}
+
+
+</style>
+</head>
+
+<body>
+   <image class="image"></image>
+   <image class="image2"></image>
+   
+   <h1 style="text-align: center;">SMART CV APP 5000</h1>
+   <h2 style="text-align: center;">HUIDIGE TEMPERATUUR: <b id='curtempdiv'></b></h2>
+
+   <!TABLE>
+</body>
+<div class="divTable">
+<div class="divTableBody">
+   <div class="divTableRow">
+      <div class="divTableCell">
+         <h3 style="text-align: right;">DAG TEMP:</h3>
+      </div>
+      <div class="divTableCell"><input type ='number' min='5.5' max='29.5' 					step='0.5' id='tf' value='' onclick=''></h3></div>
+      <div class="divTableCell">
+         <h3 style="text-align: left;">ºC</h3>
+      </div>
+      <div class="divTableCell">&nbsp;</div>
+      <div class="divTableCell">&nbsp;</div>
+   </div>
+   <div class="divTableRow">
+      <div class="divTableCell">
+         <h3 style="text-align: right;">DAG START TIJD:</h3>
+      </div>
+      <div class="divTableCell"><input type ='number' min='00' max='12' 					step='1.0' id='dagh' value='00' onclick=''></div>
+      <div class="divTableCell">
+         <h3 style="text-align: left;">HH</h3>
+      </div>
+      <div class="divTableCell"><input type ='number' min='00' max='45' 					step='15.0' id='dagm' value='00' onclick=''></div>
+      <div class="divTableCell">
+         <h3 style="text-align: left;">MM</h3>
+      </div>
+   </div>
+   
+   
+   <!--//SLIDERS
+   
+   <div class="divTableRow">
+      <div class="divTableCell">  <h3 style="text-align: right;">DAG START TIJD: </h3></div>
+      <div class="divTableCell"><h3 style="text-align: center;"span id="demo"></h3 span>				</div>
+               <div class="slidecontainer">
+      			<input type="range" min="0000" max="1200" value="1200" step="100" class="slider" 					id="myRange"></div>
+      <div class="divTableCell">&nbsp;</div>
+      <div class="divTableCell">&nbsp;</div>
+      </div> 
+      
+    //END SLIDERS  --> 
+      
+      
+   <div class="divTableRow">
+      <div class="divTableCell">
+         <h3 style="text-align: right;">NACHT TEMP:</h3>
+      </div>
+      <div class="divTableCell"><input type ='number' min='5.5' max='29.5' 				step='0.5' id='tf2' value='' onclick=''></div>
+      <div class="divTableCell">
+         <h3 style="text-align: left;">ºC</h3>
+      </div>
+      <div class="divTableCell">&nbsp;</div>
+      <div class="divTableCell">&nbsp;</div>
+   </div>
+   <div class="divTableRow">
+      <div class="divTableCell">
+         <h3 style="text-align: right;">NACHT START TIJD:</h3>
+      </div>
+      <div class="divTableCell"><input type ='number' min='12' max='24' 					step='1.0' id='nachth' value='12' onclick=''></div>
+      <div class="divTableCell">
+         <h3 style="text-align: left;">HH</h3>
+      </div>
+      <div class="divTableCell"><input type ='number' min='00' max='45' 					step='15.0' id='nachtm' value='00' onclick=''></div>
+      <div class="divTableCell">
+         <h3 style="text-align: left;">MM</h3>
+      </div>
+   </div>
+   
+      <!--
+      
+      //SLIDERS
+      
+      <div class="divTableRow">
+      <div class="divTableCell">  <h3 style="text-align: right;">NACHT START TIJD: </h3></div>
+      <div class="divTableCell"><h3 style="text-align: center;"span id="demo2"></h3 span>						</div>
+               <div class="slidecontainer">
+      			<input type="range" min="1200" max="2400" value="1200" step="100" class="slider" 					id="myRange2"></div>
+      <div class="divTableCell">&nbsp;</div>
+               <div class="divTableCell">&nbsp;</div>
+      </div> 
+      
+      //END SLIDERS
+      
+      -->
+      
+      
+   <div class="divTableRow">
+      <div class="divTableCell"><h3 style="text-align: right;">HUIDIGE TIJD:</h3></div>
+      <div class="divTableCell"><h3><body onload="startTime()"><div id="txt"></div>
+      </div></h3>
+      <div class="divTableCell">&nbsp;</div>
+      <div class="divTableCell">&nbsp;</div>
+      <div class="divTableCell">&nbsp;</div>
+   </div>
+   <div class="divTableRow">
+       <div class="divTableCell">&nbsp;</div>
+       <div class="divTableCell"><button class="button" onclick='javascript:setTemp();' >SET</button> </h2></div>
+       <div class="divTableCell">&nbsp;</div>
+       <div class="divTableCell">&nbsp;</div>
+       <div class="divTableCell">&nbsp;</div>
+  	</div>
+</div>
+
+<body>
+<h4 style="text-align: center;" th:text="'SMART CV APP versie ' + ${appversion}"></h4>
+<div style='color:red;' id='alertdiv'></div>
+
+</body>
+
+<!-- 
+
+JAVASCRIPT
+
+-->
+
+<script>
+    function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML =
+            h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+    }
+
+    function checkTime(i) {
+        if (i < 10) {
+            i = "0" + i
+        }; // add zero in front of numbers < 10
+        return i;
+    }
+</script>
+
+
+
+<!SLIDERJS>
+
+<script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+    }
+</script>
+
+<script>
+    var slider2 = document.getElementById("myRange2");
+    var output2 = document.getElementById("demo2");
+    output2.innerHTML = slider2.value;
+
+    slider2.oninput = function() {
+        output2.innerHTML = this.value;
+    }
+</script>
+
+<!-- 
+
+END JAVASCRIPT
+
+-->
+
+
+</html>
+
+
