@@ -1,6 +1,6 @@
 
 var intID, connErr = false, Tset = false, isBusy = false; 
-var ajaxRequest, url = 'http://localhost:8080/', canAjax = false; 
+var ajaxRequest, canAjax = false, url = document.location.href;
 
 function ajaxInit() { 
 	canAjax = false; 
@@ -25,7 +25,8 @@ function ajaxInit() {
 				}
 				if(connErr || ajaxRequest.responseText.split('#')[0] == '-100.0') { 
 					document.getElementById('alertdiv').innerHTML = '<br>Kan geen verbinding maken met SmartCV .. <br>Bel a.u.b. het servicenummer.'; 
-				} else { 
+					document.getElementById('curtempdiv').innerHTML = 'Error';
+				} else {
 					document.getElementById('alertdiv').innerHTML = ''; 
 				}
 			}
