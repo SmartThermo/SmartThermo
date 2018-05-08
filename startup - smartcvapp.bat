@@ -1,1 +1,1 @@
-java -jar smartcvapp-1-RELEASE.jar
+java -jar smartcvapp-1.0-RELEASE-2018.jar
