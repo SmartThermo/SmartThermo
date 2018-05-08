@@ -1,0 +1,1 @@
+java -jar smartcvapp-1-RELEASE.jar
