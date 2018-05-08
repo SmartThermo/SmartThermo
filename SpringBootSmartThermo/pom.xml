@@ -6,7 +6,7 @@
 
 	<groupId>com.tsecourse</groupId>
 	<artifactId>smartcvapp</artifactId>
-	<version>1.0-RELEASE-2018</version>
+	<version>1.1-RELEASE</version>
 	<packaging>jar</packaging>
 
 	<name>smartcvapp</name>
