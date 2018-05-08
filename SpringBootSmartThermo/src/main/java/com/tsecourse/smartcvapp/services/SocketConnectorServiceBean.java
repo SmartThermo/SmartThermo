@@ -50,7 +50,7 @@ public class SocketConnectorServiceBean implements SocketConnectorService {
 	public void disconnect() {
 		try {
 			socket.close();
-			System.out.println("socket disconnect");
+			System.out.println("Socket disconnect");
 		} catch (Exception e) {
 			System.out.println("Error socket disconnect: " + e);
 		}

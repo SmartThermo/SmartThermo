@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.tsecourse.smartcvapp.SmartCVApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.36 s - in com.tsecourse.smartcvapp.SmartCVApplicationTests
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.532 s - in com.tsecourse.smartcvapp.SmartCVApplicationTests

@@ -85,7 +85,7 @@ public class CVProxyServiceBean implements CVProxyService {
 		socketConn.connect();
 		
 		while( !socketConn.isConnected() ) {
-			System.out.println("Connection to CV could not be made.");
+			System.out.println("Connection to CV could not be made, retry.");
 			waitPauze(6 * am.getPAUZEMILLIS());
 			socketConn.connect();
 		}
@@ -123,7 +123,7 @@ public class CVProxyServiceBean implements CVProxyService {
 			LocalTime ltStart = LocalTime.parse(am.getDAYSTART(), DateTimeFormatter.ofPattern("HH:mm"));
 			LocalTime ltEnd = LocalTime.parse(am.getDAYEND(), DateTimeFormatter.ofPattern("HH:mm"));
 
-			System.out.println("time on SmartCV side: " + dateStr + ", lt:  " + lt + ", " + ltStart + ", " + ltEnd);
+			System.out.println("Time on SmartCV side: " + dateStr + ", lt:  " + lt + ", " + ltStart + ", " + ltEnd);
 
 			cvState.setSetTempRoom(Double.parseDouble(am.retrieveData(am.getGUIFILENAME())));
 			cvState.setSetTempRoomNight(Double.parseDouble(am.retrieveData(am.getGUIFILENAMENIGHT())));
@@ -143,10 +143,10 @@ public class CVProxyServiceBean implements CVProxyService {
 
 			if (cvState.getTempRoom() <= minSwitchPoint) {
 				turnOn();
-				System.out.println(">>>> turn on");
+				System.out.println(">>>> Turn CV on");
 			} else {
 				turnOff();
-				System.out.println(">>>> turn off");
+				System.out.println(">>>> Turn CV off");
 			}
 
 			continue CONTROLTEMPROOMLOOP;

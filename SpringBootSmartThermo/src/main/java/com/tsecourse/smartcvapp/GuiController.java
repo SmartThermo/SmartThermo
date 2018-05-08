@@ -9,7 +9,7 @@ public class GuiController {
 	
 	@RequestMapping("/")
 	public String templateShow(Model model) {
-		model.addAttribute("appversion", "0.5");
+		model.addAttribute("appversion", "1.0");
 		return "html/gui";
 	}
 
